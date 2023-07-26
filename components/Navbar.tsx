@@ -1,12 +1,13 @@
 import Link from "next/link";
 import styles from "./navbar.module.css";
+import Logo from "./Logo";
 
 type Props = {};
 const Navbar = (props: Props) => {
 	return (
 		<header className={styles.header}>
 			<Link href="/">
-				<h1>Logo</h1>
+				<Logo />
 			</Link>
 			<nav>
 				<ul>
