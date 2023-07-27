@@ -5,7 +5,7 @@ import styles from "@/components/post.module.css";
 type Props = {
 	title: string;
 	image: string;
-	date: Date;
+	date: string;
 	excerpt: string;
 };
 const Post = ({ date, excerpt, image, title }: Props) => {
@@ -17,10 +17,10 @@ const Post = ({ date, excerpt, image, title }: Props) => {
 		<li className={styles.post}>
 			<Link href={""}>
 				<div className={styles.image}>
-					<Image src={image} width={300} height={200} alt={title} />
+					<Image src={image} width={400} height={200} alt={title} />
 				</div>
 				<div className={styles.content}>
-					<h2>{title}</h2>
+					<h3>{title}</h3>
 					<p>{dataFormating}</p>
 					<p>{excerpt}</p>
 				</div>

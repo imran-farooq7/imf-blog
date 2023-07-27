@@ -2,14 +2,12 @@ import Post from "./Post";
 import styles from "@/components/posts.module.css";
 
 type Props = {
-	posts: [
-		{
-			title: string;
-			image: string;
-			date: Date;
-			excerpt: string;
-		}
-	];
+	posts: {
+		title: string;
+		image: string;
+		date: string;
+		excerpt: string;
+	}[];
 };
 const Posts = ({ posts }: Props) => {
 	return (
@@ -21,6 +19,7 @@ const Posts = ({ posts }: Props) => {
 						excerpt={post.excerpt}
 						image={post.image}
 						title={post.title}
+						key={post.title}
 					/>
 				);
 			})}
