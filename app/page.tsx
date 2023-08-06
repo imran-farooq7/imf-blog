@@ -1,31 +1,14 @@
 import FeaturedPosts from "@/components/FeaturedPosts";
 import Hero from "@/components/Hero";
+import { getAllPosts } from "@/utils/postsUtils";
 
 export default function Home() {
-	const Dummy_Posts = [
-		{
-			title: "Next js 13",
-			excerpt: "Next js 13 features",
-			date: "2022-01-10",
-			image: "/next.js image component.png",
-		},
-		{
-			title: "Next js 13",
-			excerpt: "Next js 13 features",
-			date: "2022-01-10",
-			image: "/next.js image component.png",
-		},
-		{
-			title: "Next js 13",
-			excerpt: "Next js 13 features",
-			date: "2022-01-10",
-			image: "/next.js image component.png",
-		},
-	];
+	const posts = getAllPosts();
+
 	return (
 		<>
 			<Hero />
-			<FeaturedPosts posts={Dummy_Posts} />
+			<FeaturedPosts posts={posts} />
 		</>
 	);
 }
