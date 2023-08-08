@@ -1,9 +1,9 @@
 import FeaturedPosts from "@/components/FeaturedPosts";
 import Hero from "@/components/Hero";
-import { getAllPosts } from "@/utils/postsUtils";
+import { getFeaturedPosts } from "@/utils/postsUtils";
 
 export default function Home() {
-	const posts = getAllPosts();
+	const posts = getFeaturedPosts();
 
 	return (
 		<>

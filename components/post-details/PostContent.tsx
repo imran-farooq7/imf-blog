@@ -1,20 +1,43 @@
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import PostHeader from "./PostHeader";
 import styles from "./postcontent.module.css";
+import Image from "next/image";
 
-type Props = {};
-const PostContent = (props: Props) => {
-	const DUMMY_POST = {
-		title: "Next js 13",
-		excerpt: "Next js 13 features",
-		date: "2022-01-10",
-		image: "/next.js image component.png",
-		content: "# this is the first post",
+type Props = {
+	post: {
+		title: string;
+		excerpt: string;
+		date: string;
+		image: string;
+		content: string;
 	};
+};
+// const PostContent = ({ data, content }: Props) => {
+// 	return (
+// 		<article className={styles.content}>
+// 			<PostHeader title={data.title} image={data.image} />
+// 			<ReactMarkdown>{content}</ReactMarkdown>
+// 		</article>
+// 	);
+// };
+const PostContent = ({ post }: Props) => {
 	return (
 		<article className={styles.content}>
-			<PostHeader title={DUMMY_POST.title} image={DUMMY_POST.image} />
-			<ReactMarkdown>{DUMMY_POST.content}</ReactMarkdown>
+			<PostHeader title={post.title} image={post.image} />
+			<ReactMarkdown
+				components={{
+					img: () => (
+						<Image
+							src={"/nextjs-file-based-routing.png"}
+							alt={"file-based-routing"}
+							width={600}
+							height={300}
+						/>
+					),
+				}}
+			>
+				{post.content}
+			</ReactMarkdown>
 		</article>
 	);
 };

@@ -1,31 +1,13 @@
 import Posts from "@/components/Posts";
 import "@/app/globals.css";
+import { getAllPosts } from "@/utils/postsUtils";
 
 const PostsPage = () => {
-	const Dummy_Posts = [
-		{
-			title: "Next js 13",
-			excerpt: "Next js 13 features",
-			date: "2022-01-10",
-			image: "/next.js image component.png",
-		},
-		{
-			title: "Next js 13",
-			excerpt: "Next js 13 features",
-			date: "2022-01-10",
-			image: "/next.js image component.png",
-		},
-		{
-			title: "Next js 13",
-			excerpt: "Next js 13 features",
-			date: "2022-01-10",
-			image: "/next.js image component.png",
-		},
-	];
+	const posts = getAllPosts();
 	return (
 		<div className="posts">
 			<h1>All Posts</h1>
-			<Posts posts={Dummy_Posts} />
+			<Posts posts={posts} />
 		</div>
 	);
 };

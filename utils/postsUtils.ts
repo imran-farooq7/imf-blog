@@ -6,7 +6,7 @@ export const getPostData = (fileName: string) => {
 	const fullPath = path.join(postsPath, fileName);
 	const fileContent = fs.readFileSync(fullPath, "utf-8");
 	const { data, content } = matter(fileContent);
-	console.log(data, "data");
+	// console.log(data, "data");
 	const postSlug = fileName.replace(/\.md$/, "");
 	const postData = {
 		slug: postSlug,
@@ -26,5 +26,7 @@ export const getAllPosts = () => {
 };
 
 export const getFeaturedPosts = () => {
-	const featuredPosts = getAllPosts().filter((post) => post.isFeatured);
+	const allPosts = getAllPosts();
+	const featuredPosts = allPosts.filter((post) => post.isFeatured);
+	return featuredPosts;
 };

@@ -7,6 +7,7 @@ type Props = {
 		image: string;
 		date: string;
 		excerpt: string;
+		slug: string;
 	}[];
 };
 const Posts = ({ posts }: Props) => {
@@ -20,6 +21,7 @@ const Posts = ({ posts }: Props) => {
 						image={post.image}
 						title={post.title}
 						key={post.title}
+						slug={post.slug}
 					/>
 				);
 			})}

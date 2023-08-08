@@ -7,15 +7,16 @@ type Props = {
 	image: string;
 	date: string;
 	excerpt: string;
+	slug: string;
 };
-const Post = ({ date, excerpt, image, title }: Props) => {
+const Post = ({ date, excerpt, image, title, slug }: Props) => {
 	const dataFormating = new Date(date).toLocaleDateString("en-US", {
 		day: "numeric",
 		month: "long",
 	});
 	return (
 		<li className={styles.post}>
-			<Link href={""}>
+			<Link href={`/posts/${slug}`}>
 				<div className={styles.image}>
 					<Image src={image} width={400} height={200} alt={title} />
 				</div>
