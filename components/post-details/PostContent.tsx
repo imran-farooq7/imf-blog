@@ -1,4 +1,7 @@
+"use client";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import PostHeader from "./PostHeader";
 import styles from "./postcontent.module.css";
 import Image from "next/image";
@@ -32,6 +35,13 @@ const PostContent = ({ post }: Props) => {
 							alt={"file-based-routing"}
 							width={600}
 							height={300}
+						/>
+					),
+					code: (code) => (
+						<SyntaxHighlighter
+							language={code.lang}
+							children={code.children}
+							style={atomDark}
 						/>
 					),
 				}}
