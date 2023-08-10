@@ -1,5 +1,7 @@
+import Form from "@/components/Form";
+
 type Props = {};
 const ContactPage = (props: Props) => {
-	return <div>ContactPage</div>;
+	return <Form />;
 };
 export default ContactPage;
