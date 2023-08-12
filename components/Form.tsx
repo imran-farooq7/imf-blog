@@ -1,13 +1,16 @@
 "use client";
 import { FormEvent, useState } from "react";
 import styles from "./Form.module.css";
+import Notification from "./Notification";
 
 const Form = () => {
 	const [email, setEmail] = useState("");
 	const [name, setName] = useState("");
 	const [message, setMessage] = useState("");
+	const [status, setStatus] = useState("");
 	const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		setStatus("pending");
 		const res = await fetch("/api/user", {
 			method: "POST",
 			body: JSON.stringify({
@@ -19,7 +22,37 @@ const Form = () => {
 				"Content-Type": "application/json",
 			},
 		});
+		const data = await res.json();
+		if (res.ok) {
+			setStatus("success");
+		}
+		if (!res.ok) {
+			setStatus("error");
+			throw new Error(data.message || "Something went wrong");
+		}
 	};
+	let notification;
+	if (status === "pending") {
+		notification = {
+			status: "pending",
+			title: "Sending message...",
+			message: "Your message is on it's way",
+		};
+	}
+	if (status === "success") {
+		notification = {
+			status: "success",
+			title: " Success!",
+			message: "message sent",
+		};
+	}
+	if (status === "error") {
+		notification = {
+			status: "error",
+			title: "Error!",
+			message: "Something went wrong",
+		};
+	}
 	return (
 		<section className={styles.contact}>
 			<h1>How can i help you</h1>
@@ -66,6 +99,13 @@ const Form = () => {
 					<button>Send Message</button>
 				</div>
 			</form>
+			{notification && (
+				<Notification
+					status={notification.status}
+					message={notification.message}
+					title={notification.title}
+				/>
+			)}
 		</section>
 	);
 };
