@@ -2,6 +2,7 @@
 import { FormEvent, useState } from "react";
 import styles from "./Form.module.css";
 import Notification from "./Notification";
+import { getMessage } from "@/utils/utils";
 
 const Form = () => {
 	const [email, setEmail] = useState("");
@@ -11,17 +12,7 @@ const Form = () => {
 	const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		setStatus("pending");
-		const res = await fetch("/api/user", {
-			method: "POST",
-			body: JSON.stringify({
-				email,
-				name,
-				message,
-			}),
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
+		const res = await getMessage(email, name, message);
 		const data = await res.json();
 		if (res.ok) {
 			setStatus("success");
