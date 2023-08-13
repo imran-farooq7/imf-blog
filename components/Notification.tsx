@@ -1,4 +1,4 @@
-import Styles from "./notification.module.css";
+import Styles from "./Notification.module.css";
 type Props = {
 	title: string;
 	message: string;
