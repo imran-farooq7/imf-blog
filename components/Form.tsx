@@ -16,6 +16,9 @@ const Form = () => {
 		const data = await res.json();
 		if (res.ok) {
 			setStatus("success");
+			setEmail("");
+			setMessage("");
+			setName("");
 		}
 		if (!res.ok) {
 			setStatus("error");
